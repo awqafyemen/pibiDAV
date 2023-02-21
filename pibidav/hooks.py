@@ -47,12 +47,12 @@ for item in nc_list:
 # application home page (will override Website Settings)
 # home_page = "login"
 
-brand_html = '<div><img width="27px" src="/assets/pibidav/image/pibiCo_engine_largo.png"> pibi<strong>DAV</strong></div>'
+# brand_html = '<div><img width="27px" src="/assets/pibidav/image/pibiCo_engine_largo.png"> pibi<strong>DAV</strong></div>'
 
-website_context = {
-  "favicon": "/assets/pibidav/image/favicon.svg",
-  "splash_image": "/assets/pibidav/image/pibiCo_engine_largo.png"
-}
+# website_context = {
+#   "favicon": "/assets/pibidav/image/favicon.svg",
+#   "splash_image": "/assets/pibidav/image/pibiCo_engine_largo.png"
+# }
 
 # website user home page (by Role)
 # role_home_page = {
