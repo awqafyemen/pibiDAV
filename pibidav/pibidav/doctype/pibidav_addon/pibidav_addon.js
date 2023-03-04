@@ -3,7 +3,7 @@
 
 frappe.ui.form.on('PibiDAV Addon', {
   refresh(frm) {
-    if(!frm.doc.is_new()){
+    if(!frm.is_new()){
       frm.add_custom_button(__("Refresh Files List"), function() {
         frappe.call({
           method: "pibidav.pibidav.custom.update_attachment_item",
