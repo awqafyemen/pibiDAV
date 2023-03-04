@@ -324,6 +324,7 @@ def upload_file_to_nc(doc, method=None):
       doc.uploaded_to_nextcloud = 1
       doc.folder_path = document.nc_folder
       doc.share_link = share.get_link()
+      doc.file_url = share.get_link()
       
       fileid, nctags = tag_file_nc(nc, nc_path, _tag_list)
       doc.fileid = fileid
