@@ -4,6 +4,7 @@
 import frappe
 from frappe.model.document import Document
 from frappe import _, msgprint, throw
+from frappe.utils import cint
 
 from frappe.utils.background_jobs import enqueue
 from frappe.utils.backups import new_backup
@@ -22,7 +23,13 @@ class NextCloudSettings(Document):
   error_log = []
   failed_uploads = []
   timeout = 1500
-  
+
+  def validate(self):
+    if self.remove_local_files:
+      if self.remove_file_samller and cint(self.remove_file_larger) >= cint(self.remove_file_samller):
+        throw(_("Remove File Larger must be samller than Remove File samller"))
+
+
   def start_taking_backup(self, retry_count=0, upload_db_backup=True):
     try:
       if self.nc_backup_enable:

@@ -18,6 +18,12 @@
   "send_notifications_to",
   "send_email_for_successful_backup",
   "backup_files",
+  "remove_local_files_section",
+  "remove_local_files",
+  "use_nextcloud_for_duplicates",
+  "column_break_5pkfr",
+  "remove_file_larger",
+  "remove_file_samller",
   "sb_doctype_selection",
   "nc_doctype_included",
   "cb_nc_selection",
@@ -142,12 +148,54 @@
   {
    "fieldname": "cb_01",
    "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "depends_on": "eval:doc.nc_backup_enable;",
+   "fieldname": "remove_local_files",
+   "fieldtype": "Check",
+   "label": "Remove Local Files"
+  },
+  {
+   "depends_on": "eval:doc.nc_backup_enable;",
+   "fieldname": "remove_local_files_section",
+   "fieldtype": "Section Break",
+   "label": "Remove Local Files"
+  },
+  {
+   "fieldname": "column_break_5pkfr",
+   "fieldtype": "Column Break"
+  },
+  {
+   "depends_on": "eval:doc.remove_local_files;",
+   "description": "Size in Bytes, Larger Files won't be removed, <b>0</b> for infinite",
+   "fieldname": "remove_file_samller",
+   "fieldtype": "Int",
+   "label": "Remove File Samller",
+   "non_negative": 1
+  },
+  {
+   "default": "0",
+   "depends_on": "eval:doc.remove_local_files;",
+   "description": "Remove <b>FIles</b> have not uploaded to <b>NextCloud</b> if they refer to same path as <b>File</b> has uploaded to <b>NextCloud</b> and change there path to <b>NextCloud</b> Path",
+   "fieldname": "use_nextcloud_for_duplicates",
+   "fieldtype": "Check",
+   "label": "Use NextCloud for Duplicates"
+  },
+  {
+   "default": "0",
+   "depends_on": "eval:doc.remove_local_files;",
+   "description": "Size in Bytes, Smaller Files won't be removed",
+   "fieldname": "remove_file_larger",
+   "fieldtype": "Int",
+   "label": "Remove File Larger",
+   "non_negative": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "issingle": 1,
  "links": [],
- "modified": "2022-05-11 22:03:17.161609",
+ "modified": "2023-05-23 22:52:01.277674",
  "modified_by": "Administrator",
  "module": "Pibidav",
  "name": "NextCloud Settings",
