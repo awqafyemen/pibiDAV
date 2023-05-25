@@ -20,6 +20,20 @@ frappe.ui.form.on('NextCloud Settings', {
 					freeze: true
 				});
 			}).addClass("btn-primary");
+
+      if (frm.doc.remove_local_files){
+        frm.add_custom_button(__("Delete Uploaded Files"), function() {
+          if (frm.is_dirty()){
+            frappe.throw(__("Save Settings before perform this task"));
+          }
+          else{
+            frappe.call({
+              method: "pibidav.pibidav.local_file.remove_uploaded_files",
+            });
+          }
+        }).addClass("btn-danger");
+      }
+
 		}
     // Fill DocType Included with Data From Reference Item Table
     var includeArr = frm.doc.reference_item;

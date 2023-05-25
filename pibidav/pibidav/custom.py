@@ -13,6 +13,7 @@ import pibidav.pibidav.nextcloud as nextcloud
 
 from frappe.utils.password import get_decrypted_password
 from frappe.utils.file_manager import get_file_path
+from .local_file import delete_file_from_local_system
 
 import frappe.desk.doctype.tag.tag as tag
 
@@ -335,7 +336,12 @@ def upload_file_to_nc(doc, method=None):
             fptag.uploaded_to_nextcloud = 1
             fptag.tagid = strtag['tagid']
             fptag.save()
-            
+
+      try:
+          delete_file_from_local_system(doc)
+      except Exception as e:
+          pass
+
       doc.save()
       nc.logout()
         
