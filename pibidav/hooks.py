@@ -14,7 +14,7 @@ app_license = "MIT"
 
 # include js, css files in header of desk.html
 # app_include_css = "/assets/pibidav/css/pibidav.css"
-app_include_js = "/assets/pibidav/js/pibidav.js"
+app_include_js = ["/assets/pibidav/js/pibidav.js", "/assets/pibidav/js/dist/nc_pibidav.js"]
 
 # include js, css files in header of web template
 # web_include_css = "/assets/pibidav/css/pibidav.css"
@@ -36,10 +36,9 @@ app_include_js = "/assets/pibidav/js/pibidav.js"
 # doctype_tree_js = {"doctype" : "public/js/doctype_tree.js"}
 # doctype_calendar_js = {"doctype" : "public/js/doctype_calendar.js"}
 
-nc_list = ["Customer","Project","Sales Invoice","Purchase Invoice","Supplier","Event"]
-doctype_js = {}
-for item in nc_list:
-  doctype_js[item] = "public/js/dist/nc_pibidav.js"
+
+extend_bootinfo = "pibidav.utils.load_docs"
+
 
 # Home Pages
 # ----------
